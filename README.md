@@ -1,4 +1,5 @@
 # Prompia
+This is for Education Purpose my #1 project after many years with no coding knowledges
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
