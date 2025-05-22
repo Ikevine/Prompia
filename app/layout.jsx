@@ -12,15 +12,20 @@ export const metadata = {
 const RootLayout = ({ children }) => (
     <html lang="en">
         <body>
-            <div className="main">
+            <Provider>
+               <div className="main">
                 <div className="gradient"/>
-            </div>
-            {/* Our  main content */}
-            <main className="app">
+                  </div>
+                  
+                {/* Our  main content */}
+                 <main className="app">
+
                 {/* Importing navbar */}
                 <Nav/>
-                {children}
-            </main>
+                  {children}
+               </main>
+
+            </Provider>
         </body>
     </html>
 )

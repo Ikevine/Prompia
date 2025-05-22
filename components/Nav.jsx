@@ -4,9 +4,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { signIn,signOut,useSession,getProviders} from "next-auth/react"
-import { set } from 'mongoose'
+
 const Nav = () => {
-    const isSignedIn = true;
+
+    const {data:session} = useSession();
 
     const [providers, setProviders] = useState(null);
     // Tggle for the mobile version
@@ -39,7 +40,7 @@ const Nav = () => {
         {/* Desktop Navigatioin */}
         <div className="sm:flex hidden">
             {/* Logic to display nav content based on signin  */}
-            {isSignedIn ?(
+            {session?.user ?(
                 <div className="flex gap-3 md:gap-5">
                    <Link href="/create-prompt" className='black_btn'>
                    Create-post
@@ -51,7 +52,7 @@ const Nav = () => {
 
                    <Link href="/profile">
                     <Image
-                    src="/assets/images/logo.svg"
+                    src={session?.user.image}
                     alt='Profile'
                     height={37}
                     width={37}
@@ -79,13 +80,12 @@ const Nav = () => {
         </div>
 
 
-
         {/* Mobile navigation */}
         <div className="sm:hidden flex relative">
-            {isSignedIn ? (
+            {session?.user ? (
                 <div className="flex">
                     <Image
-                    src="/assets/images/logo.svg"
+                    src={session?.user.image}
                     alt='Profile'
                     height={37}
                     width={37}
